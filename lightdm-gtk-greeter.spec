@@ -4,7 +4,7 @@
 #
 Name     : lightdm-gtk-greeter
 Version  : 2.0.1
-Release  : 1
+Release  : 2
 URL      : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.1/+download/lightdm-gtk-greeter-2.0.1.tar.gz
 Source0  : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.1/+download/lightdm-gtk-greeter-2.0.1.tar.gz
 Summary  : No detailed summary available
@@ -65,6 +65,7 @@ locales components for the lightdm-gtk-greeter package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1484419722
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -76,6 +77,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1484419722
 rm -rf %{buildroot}
 %make_install
 %find_lang lightdm-gtk-greeter
@@ -113,8 +115,8 @@ rm -rf %{buildroot}
 
 %files doc
 %defattr(-,root,root,-)
-%doc /usr/share/doc/lightdm-gtk-greeter/*
+%doc /usr/share/doc/lightdm\-gtk\-greeter/*
 
-%files locales -f lightdm-gtk-greeter.lang 
+%files locales -f lightdm-gtk-greeter.lang
 %defattr(-,root,root,-)
 
