@@ -6,7 +6,7 @@
 #
 Name     : lightdm-gtk-greeter
 Version  : 2.0.6
-Release  : 4
+Release  : 5
 URL      : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz
 Source0  : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz
 Source99 : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz.asc
