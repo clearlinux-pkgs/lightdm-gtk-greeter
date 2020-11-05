@@ -6,10 +6,10 @@
 #
 Name     : lightdm-gtk-greeter
 Version  : 2.0.6
-Release  : 6
+Release  : 7
 URL      : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz
 Source0  : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz
-Source99 : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz.asc
+Source1  : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -74,28 +74,37 @@ locales components for the lightdm-gtk-greeter package.
 
 %prep
 %setup -q -n lightdm-gtk-greeter-2.0.6
+cd %{_builddir}/lightdm-gtk-greeter-2.0.6
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1539371912
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604609842
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1539371912
+export SOURCE_DATE_EPOCH=1604609842
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lightdm-gtk-greeter
-cp COPYING %{buildroot}/usr/share/package-licenses/lightdm-gtk-greeter/COPYING
+cp %{_builddir}/lightdm-gtk-greeter-2.0.6/COPYING %{buildroot}/usr/share/package-licenses/lightdm-gtk-greeter/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 %make_install
 %find_lang lightdm-gtk-greeter
 
@@ -137,7 +146,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/lightdm-gtk-greeter/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/lightdm-gtk-greeter/COPYING
+/usr/share/package-licenses/lightdm-gtk-greeter/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files locales -f lightdm-gtk-greeter.lang
 %defattr(-,root,root,-)
