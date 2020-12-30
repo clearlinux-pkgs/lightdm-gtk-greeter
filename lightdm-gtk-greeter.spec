@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x76E6FEEC95FC5E22 (smd.seandavis@gmail.com)
 #
 Name     : lightdm-gtk-greeter
-Version  : 2.0.6
-Release  : 7
-URL      : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz
-Source0  : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz
-Source1  : https://launchpad.net/lightdm-gtk-greeter/2.0/2.0.6/+download/lightdm-gtk-greeter-2.0.6.tar.gz.asc
+Version  : 2.0.8
+Release  : 8
+URL      : https://github.com/Xubuntu/lightdm-gtk-greeter/releases/download/lightdm-gtk-greeter-2.0.8/lightdm-gtk-greeter-2.0.8.tar.gz
+Source0  : https://github.com/Xubuntu/lightdm-gtk-greeter/releases/download/lightdm-gtk-greeter-2.0.8/lightdm-gtk-greeter-2.0.8.tar.gz
+Source1  : https://github.com/Xubuntu/lightdm-gtk-greeter/releases/download/lightdm-gtk-greeter-2.0.8/lightdm-gtk-greeter-2.0.8.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -20,15 +20,16 @@ Requires: lightdm-gtk-greeter-locales = %{version}-%{release}
 BuildRequires : gettext
 BuildRequires : gobject-introspection-dev
 BuildRequires : perl(XML::Parser)
-BuildRequires : pkgconfig(exo-1)
+BuildRequires : pkgconfig(exo-2)
 BuildRequires : pkgconfig(gmodule-export-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(liblightdm-gobject-1)
 BuildRequires : pkgconfig(libxklavier)
 BuildRequires : pkgconfig(x11)
+BuildRequires : xfce4-dev-tools
 
 %description
-https://launchpad.net/lightdm-gtk-greeter
+No detailed description available
 
 %package bin
 Summary: bin components for the lightdm-gtk-greeter package.
@@ -73,15 +74,15 @@ locales components for the lightdm-gtk-greeter package.
 
 
 %prep
-%setup -q -n lightdm-gtk-greeter-2.0.6
-cd %{_builddir}/lightdm-gtk-greeter-2.0.6
+%setup -q -n lightdm-gtk-greeter-2.0.8
+cd %{_builddir}/lightdm-gtk-greeter-2.0.8
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604609842
+export SOURCE_DATE_EPOCH=1609290845
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -101,10 +102,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1604609842
+export SOURCE_DATE_EPOCH=1609290845
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lightdm-gtk-greeter
-cp %{_builddir}/lightdm-gtk-greeter-2.0.6/COPYING %{buildroot}/usr/share/package-licenses/lightdm-gtk-greeter/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/lightdm-gtk-greeter-2.0.8/COPYING %{buildroot}/usr/share/package-licenses/lightdm-gtk-greeter/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 %make_install
 %find_lang lightdm-gtk-greeter
 
