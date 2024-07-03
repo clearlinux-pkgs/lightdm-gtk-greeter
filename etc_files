@@ -1,0 +1,4 @@
+/etc/:
+/etc/lightdm:
+lightdm
+lightdm-gtk-greeter.conf
